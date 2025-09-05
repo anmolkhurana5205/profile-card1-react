@@ -1,5 +1,17 @@
 import "./styles.css";
 
+const allSkills = [
+  { skillName: "HTML", color: "blue", level: "advance" },
+  { skillName: "JAVASCRIPT", color: "red", level: "advance" },
+  { skillName: "CSS", color: "yellow", level: "advance" },
+  { skillName: "JAVA", color: "lightgreen", level: "advance" },
+  { skillName: "PYTHON", color: "purple", level: "advance" },
+  { skillName: "REACT", color: "orange", level: "beginner" },
+  { skillName: "NODE", color: "lightblue", level: "intermediate" },
+  { skillName: "EXPRESS", color: "brown", level: "intermediate" },
+  { skillName: "NEXT", color: "gray", level: "beginner" },
+];
+
 function App() {
   return (
     <div className="card">
@@ -42,23 +54,22 @@ function Data() {
 function Skills() {
   return (
     <div className="skill-list">
-      <Skill skillName="HTML 😖" color="blue" />
-      <Skill skillName="JAVASCRIPT 🫡" color="red" />
-      <Skill skillName="CSS 🫠" color="yellow" />
-      <Skill skillName="JAVA 🤫" color="lightgreen" />
-      <Skill skillName="PYTHON 😱" color="purple" />
-      <Skill skillName="REACT 😩" color="orange" />
-      <Skill skillName="NODE 😡" color="lightblue" />
-      <Skill skillName="EXPRESS 🤤" color="brown" />
-      <Skill skillName="NEXT 😶" color="gray" />
+      {allSkills.map((skill) => (
+        <Skill
+          skillName={skill.skillName}
+          color={skill.color}
+          level={skill.level}
+        />
+      ))}
     </div>
   );
 }
 
-function Skill({ skillName, color }) {
+function Skill({ skillName, color, level }) {
   return (
     <span style={{ backgroundColor: color }} className="skill">
-      {skillName}
+      {skillName} {level === "advance" && "💪"}{" "}
+      {level === "intermediate" && "😎"} {level === "beginner" && "🙂"}
     </span>
   );
 }
